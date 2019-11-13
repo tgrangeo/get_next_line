@@ -6,7 +6,7 @@
 /*   By: tgrangeo <tgrangeo@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/07 12:08:12 by jdel-ros     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/12 14:29:34 by tgrangeo    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/13 13:17:43 by tgrangeo    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-char		*ft_strdup_char(const char *s, char c);
-int			ft_strlen(char *str);
+char		*ft_strndup(const char *s, int len);
+int			ft_strlen(const char *str);
 char		*ft_strjoin(char const *s1, char const *s2);
-char		*ft_strchr(const char *s, int c);
+int			ft_strchr(const char *s, int c);
+char		*ft_substr(char const *s, int start, size_t len);
