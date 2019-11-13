@@ -6,7 +6,7 @@
 /*   By: tgrangeo <tgrangeo@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/07 12:07:37 by jdel-ros     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/13 13:33:14 by tgrangeo    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/13 14:05:34 by tgrangeo    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -77,7 +77,7 @@ int			ft_strchr(const char *s, int c)
 	i = 0;
 	while (!(str[i] == c) && str[i])
 	{
-		if (i == 0)
+		if (str[i] == '\0')
 			return (0);
 		i++;
 	}
