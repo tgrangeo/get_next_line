@@ -6,7 +6,7 @@
 /*   By: tgrangeo <tgrangeo@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/07 13:58:01 by tgrangeo     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/13 14:59:51 by tgrangeo    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/14 11:39:55 by tgrangeo    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,20 +19,24 @@
 #include <stdio.h>
 #include "get_next_line.h"
 
-/*char	*ft_separation(char *buf, char **line, int n)
+int		ft_scan(char **mem, char **line)
 {
-	char *str;
+	int n;
+	int size;
 
-	str = ft_strndup("", 0);
-	if ( n != 0)
+	n = ft_strchr(*mem, '\n');
+	size = ft_strlen(*mem) - n - 1;
+	printf("=================FT SCAN =============\n\nn :%d\n\n\n\n", n);
+	if (n > 0)
 	{
-		*line = ft_strndup(buf, n);
-		str = ft_substr(buf, n + 1, ft_strlen(buf));
+		*line = ft_strndup(*mem, n);
+		*mem = ft_substr(*mem, n + 1, size);
+		printf("line :%s\nmem :%s\n", *line, *mem);
+		return (1);
 	}
 	else
-		str = ft_strndup(buf, ft_strlen(buf));
-	return(str);
-}*/
+		return (0);
+}
 
 
 int		get_next_line(int fd, char **line)
@@ -40,31 +44,21 @@ int		get_next_line(int fd, char **line)
 	char buf[BUFFER_SIZE + 1];
 	int ret;
 	static char *mem;
-	int n;
 
+	*line = ft_strndup("", 0);
 	if (!mem)
-	{
 		mem = ft_strndup("", 0);
-		*line = ft_strndup("", 0);
-	}
-	n = 0;
-	while ((ret = read(fd, buf, BUFFER_SIZE)))
-	{
-		buf[ret] = '\0';
-		n = ft_strchr(buf, '\n');
-		if(mem == NULL)
-			mem = ft_strndup("", 0);
-		if ( n != 0)
+	if (ft_scan(&mem, line) > 0)
+		return(1);
+	else
+		while ((ret = read(fd, buf, BUFFER_SIZE)))
 		{
-			*line = ft_strjoin(mem, ft_strndup(buf, n));
-			printf("line :%s\n", *line);
-			mem = ft_substr(buf, n + 1, ft_strlen(buf));
+			buf[ret] = '\0';
+			mem = ft_strjoin(mem, buf);
+			printf("=================FT GNL =============\n\nmem :%s\n\n\n\n", mem);
+			if (ft_scan(&mem, line) > 0)
+				return (1);
 		}
-		else
-			mem = ft_strndup(buf, ft_strlen(buf));
-		printf("n:%d\nbuf:%s\nmem:%s\n", n, buf, mem);
-		return (1);
-	}
 	return (0);
 }
 

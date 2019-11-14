@@ -1,30 +1,12 @@
-La Loutre d’Europe mesure entre 100 et 130 cm,
-dont environ un tiers pour la queue,
-pour un poids allant généralement de 6 à 11 kg.
-Les mâles ont tendance à être plus grands que
-les femelles mais ce dimorphisme n’est pas prononcé.
-Les individus des deux sexes sont morphologiquement
-très semblables mais peuvent être différenciés 
-sur le
-terrain par un observateur averti, notamment 
-grâce à la
-forme du front qui est plus proéminent chez le 
-mâle.
-Le pelage est marron foncé, plus clair sur la 
-face ventrale,
-surtout au niveau du cou. Les lèvres et parfois
- le cou présentent
-des taches blanchâtres qui peuvent permettre
-une identification des individus.
-Grâce à la morphologie aplatie du crâne, les 
-oreilles,
-les yeux et les narines sont sur un même plan,
-et ainsi la Loutre peut entendre, voir et sentir
-ce qui se passe autour d’elle (et respirer) 
-sans avoir à trop
-sortir la tête de l’eau, un peu à la manière
- d’un crocodile.
-Les doigts des pattes antérieures et
- postérieures sont reliés
-entre eux par une palmure relativement
-bien développée.
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec,
+vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
+mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
+Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis,
+feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies
+nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget
+condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel,
+luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
+Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh.
+Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
