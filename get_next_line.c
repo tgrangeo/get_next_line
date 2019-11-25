@@ -6,7 +6,7 @@
 /*   By: thomasgrangeon <thomasgrangeon@student.    +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/07 13:58:01 by tgrangeo     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/14 20:05:30 by thomasgrang ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/14 21:01:14 by thomasgrang ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -77,7 +77,7 @@ int	main(int argc, char **argv)
 			return (printf("%s\n", "fd crash"));
 		while ((ret = get_next_line(fd, &str)))
 		{
-			printf("MAIN = line %d:%s\n", i, str);
+			printf("line %d:%s\n", i, str);
 			i++;
 		}
 		close (fd);
