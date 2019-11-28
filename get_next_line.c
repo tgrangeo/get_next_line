@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   get_next_line.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: thomasgrangeon <thomasgrangeon@student.    +:+   +:    +:    +:+     */
+/*   By: tgrangeo <tgrangeo@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/07 13:58:01 by tgrangeo     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/14 21:01:14 by thomasgrang ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/28 15:43:50 by tgrangeo    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,6 +44,8 @@ int		get_next_line(int fd, char **line)
 	int ret;
 	static char *mem;
 
+	if (fd < 0)
+		return (-1);
 	*line = ft_strndup("", 0);
 	if (!mem)
 		mem = ft_strndup("", 0);
@@ -79,7 +81,10 @@ int	main(int argc, char **argv)
 		{
 			printf("line %d:%s\n", i, str);
 			i++;
+			free(str);
 		}
+		printf("line %d:%s\n", i, str);
+		free(str);
 		close (fd);
 		return (0);
 	}
