@@ -6,7 +6,7 @@
 /*   By: tgrangeo <tgrangeo@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/07 13:58:01 by tgrangeo     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/28 15:43:50 by tgrangeo    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/28 19:31:11 by tgrangeo    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,16 +25,23 @@ int		ft_scan(char **mem, char **line)
 
 	n = ft_strchr(*mem, '\n');
 	size = ft_strlen(*mem) - n - 1;
-	//printf("=================FT SCAN =============\n\nn :%d\n\n\n\n", n);
-	if (n > 0)
+	if (n == 0)
 	{
-		*line = ft_strndup(*mem, n);
-		*mem = ft_substr(*mem, n + 1, size);
-		//printf("line :%s\nmem :%s\n", *line, *mem);
+		if ((*line = ft_strndup("", 0)) == NULL)
+			return (-1);
+		if ((*mem = ft_substr(*mem, 1, size)) == NULL)
+			return (-1);
 		return (1);
 	}
-	else
-		return (0);
+	else if (n > 0)
+	{
+		if ((*line = ft_strndup(*mem, n)) == NULL)
+			return (-1);
+		if ((*mem = ft_substr(*mem, n + 1, size)) == NULL)
+			return (-1);
+		return (1);
+	}
+	return (-1);
 }
 
 
@@ -46,46 +53,25 @@ int		get_next_line(int fd, char **line)
 
 	if (fd < 0)
 		return (-1);
-	*line = ft_strndup("", 0);
 	if (!mem)
 		mem = ft_strndup("", 0);
 	if (ft_scan(&mem, line) > 0)
 		return(1);
 	else
-		while ((ret = read(fd, buf, BUFFER_SIZE)))
+		while ((ret = read(fd, buf, BUFFER_SIZE)) > 0)
 		{
 			buf[ret] = '\0';
-			//printf("buf :%s\n", buf);
 			mem = ft_strjoin(mem, buf);
-			//printf("=================FT GNL =============\n\nmem :%s\n\n\n\n", mem);
 			if (ft_scan(&mem, line) > 0)
 				return (1);
+			else
+				return (-1);
 		}
-	return (0);
-}
-
-int	main(int argc, char **argv)
-{
-	int fd;
-	int ret;
-	char *str;
-	int	i;
-	
-	i = 0;
-	if (argc != 0)
+	if (ret == 0)
 	{
-		fd = open(argv[1], O_RDONLY);
-		if (fd == -1)
-			return (printf("%s\n", "fd crash"));
-		while ((ret = get_next_line(fd, &str)))
-		{
-			printf("line %d:%s\n", i, str);
-			i++;
-			free(str);
-		}
-		printf("line %d:%s\n", i, str);
-		free(str);
-		close (fd);
-		return (0);
+		if ((*line = ft_strdup(mem)) == NULL)
+			return (-1);
+		free(mem);
 	}
+	return(0);
 }
