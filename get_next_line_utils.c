@@ -6,7 +6,7 @@
 /*   By: tgrangeo <tgrangeo@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/07 12:07:37 by jdel-ros     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/28 19:25:57 by tgrangeo    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/28 19:46:56 by tgrangeo    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,8 +25,8 @@ int				ft_strlen(const char *str)
 
 char			*ft_strndup(const char *s, int len)
 {
-	int i;
-	char *dup;
+	int			i;
+	char		*dup;
 
 	i = 0;
 	if (!(dup = (char*)malloc(sizeof(char) * (len + 1))))
@@ -40,34 +40,16 @@ char			*ft_strndup(const char *s, int len)
 	return (dup);
 }
 
-char			*ft_strdup(const char *s)
-{
-	int i;
-	char *dup;
-
-	i = 0;
-	if (!(dup = (char*)malloc(sizeof(char) * (ft_strlen(s) + 1))))
-		return (NULL);
-	while (s[i])
-	{
-		dup[i] = s[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
-}
-
 char			*ft_strjoin(char *s1, char const *s2)
 {
 	char		*str;
 	int			i;
 	int			j;
-	int			len;
 
 	if (s1 && s2)
 	{
-		len = ft_lent(((char *)s1), ((char *)s2));
-		if (!(str = (char *)malloc(sizeof(char) * (ft_strlen(s1)) + (ft_strlen(s2) + 1)))))
+		if (!(str = (char *)malloc(sizeof(char)
+		* (ft_strlen(s1)) + (ft_strlen(s2) + 1))))
 			return (NULL);
 		i = 0;
 		j = 0;
@@ -103,10 +85,9 @@ int				ft_strchr(const char *s, int c)
 	return (i);
 }
 
-
 char			*ft_substr(char *s, int start, int len)
 {
-	int	i;
+	int		i;
 	char	*dest;
 
 	if (!(s))

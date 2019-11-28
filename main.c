@@ -1,9 +1,13 @@
 #include "get_next_line.h"
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
 	int fd;
-	int ret;
 	char *str;
 	int	i;
 	
@@ -12,14 +16,14 @@ int	main(int argc, char **argv)
 	{
 		fd = open(argv[1], O_RDONLY);
 		if (fd == -1)
-			return (printf("%s\n", "fd crash"));
-		while ((ret = get_next_line(fd, &str)))
+			return (printf("-1"));
+		while (get_next_line(fd, &str) > 0)
 		{
 			printf("%d- %s\n", i, str);
 			i++;
 			free(str);
 		}
-		//printf("%d- %s\n", i, str);
+		printf("%d- %s\n", i, str);
 		free(str);
 		close (fd);
 		return (0);
