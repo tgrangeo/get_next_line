@@ -6,19 +6,30 @@
 /*   By: tgrangeo <tgrangeo@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/07 13:58:01 by tgrangeo     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/28 20:20:59 by tgrangeo    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/30 14:12:49 by tgrangeo    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <stdio.h>
 #include "get_next_line.h"
 
-int		ft_scan(char **mem, char **line)
+static int		ft_error(char **mem)
+{
+	free(*mem);
+	*mem = NULL;
+	return (-1);
+}
+
+static int		ft_error_line(char **mem, char **line)
+{
+	free(*mem);
+	free(*line);
+	*mem = NULL;
+	*line = NULL;
+	return (-1);
+}
+
+static int		ft_scan(char **mem, char **line)
 {
 	int n;
 	int size;
@@ -28,23 +39,23 @@ int		ft_scan(char **mem, char **line)
 	if (n == 0)
 	{
 		if ((*line = ft_strndup("", 0)) == NULL)
-			return (-1);
+			return (ft_error(mem));
 		if ((*mem = ft_substr(*mem, 1, size)) == NULL)
-			return (-1);
+			return (ft_error_line(mem, line));
 		return (1);
 	}
 	else if (n > 0)
 	{
 		if ((*line = ft_strndup(*mem, n)) == NULL)
-			return (-1);
+			return (ft_error(mem));
 		if ((*mem = ft_substr(*mem, n + 1, size)) == NULL)
-			return (-1);
+			return (ft_error_line(mem, line));
 		return (1);
 	}
-	return (-1);
+	return (ft_error(mem));
 }
 
-int		get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
 	char		buf[BUFFER_SIZE + 1];
 	int			ret;
@@ -58,14 +69,15 @@ int		get_next_line(int fd, char **line)
 	{
 		buf[ret] = '\0';
 		mem = ft_strjoin(mem, buf);
-		if ((ft_scan(&mem, line)) > 0)
-			return (1);
+		if ((ft_strchr(mem, '\n') >= 0))
+			return (ft_scan(&mem, line));
 	}
 	if (ret == -1)
 		return (-1);
 	if (ret == 0)
 		if ((*line = ft_strndup(mem, ft_strlen(mem))) == NULL)
-			return (-1);
+			return (ft_error(&mem));
 	free(mem);
+	mem = NULL;
 	return (0);
 }
